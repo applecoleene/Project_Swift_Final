@@ -1,0 +1,30 @@
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+
+<main class="container">
+
+  <div class="container col-xxl-8 px-4 py-5">
+    <br>
+    <div class="row flex-lg-row-reverse align-items-center g-5 pb-5 ps-5 pe-5 rounded-3 border shadow" id="homeMain">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="/Assets/images/round_logo_blue.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="150"
+          height="150" loading="lazy">
+        <img src="/Assets/images/swift_blue.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="300"
+          height="100" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 lh-1 mb-3">Welcome to Swift!</h1>
+        <p class="lead">This website is a quick survey site about online and face-to-face classes.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <a class="btn btn-outline-secondary btn-lg px-4" href="/survey-list/add">Take a Survey</a>
+          <a class="btn btn-outline-secondary btn-lg px-4" href="/survey-list">View Surveys</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include partials/bottom_nav.ejs %>
+
+<%- include partials/footer.ejs %>

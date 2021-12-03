@@ -1,0 +1,16 @@
+/*Custom css design goes here*/
+nav {
+  background-color: #8ADCFF;
+}
+
+body {
+  background-color: white;
+}
+
+#homeMain, #errorPage {
+  background-color: #D9F4FF;
+}
+
+tr{
+  background-color: #D9F4FF;
+}

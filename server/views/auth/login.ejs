@@ -1,0 +1,47 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+<!--main content-->
+<main class="container">
+    <% if(messages.length > 0) {%>
+    <div class="alert alert-danger">
+        <%= messages %>
+    </div>
+    <% } %>
+
+    <div class="row">
+        <div class="col-md-10 mx-auto col-lg-5">
+            <div class="px-4 py-4 my-4 text-center">
+                <h1 class="display-5 fw-bold">Login Page</h1>
+            </div>
+            <!--login form-->
+            <form class="form inline-block p-4 p-md-5 border rounded-3 bg-light" method="POST">
+                <fieldset class="form-group">
+                    <label for="username">Username: </label>
+                    <input type="text" class="form-control" name="username" placeholder="Enter username here"
+                        id="username" required autofocus>
+                </fieldset><br>
+
+                <fieldset class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter password here"
+                        id="password" required>
+                    <a href="/register">Register Here</a>
+                </fieldset><br>
+
+                <fieldset class="form-group text-right">
+                    <input type="submit" class="btn btn-success" value="Login">
+                    <a href="/">
+                        <input type="button" class="btn btn-warning" value="Cancel">
+                    </a>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>

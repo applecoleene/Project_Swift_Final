@@ -1,0 +1,89 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+<!--add survey content-->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <div class="px-4 py-4 my-4 text-center">
+                <h1 class="display-5 fw-bold">Fill out this quick Survey!</h1>
+            </div>
+
+            <form class="form inline-block" method="POST">
+                <div class="form-group">
+                    <label for="nameUser" class="fw-bold">Enter Name</label>
+                    <input type="text" class="form-control" id="nameUser" placeholder="Enter Name" name="name" required value="<%= survey.name %>">                </div><br>
+
+                <label class="fw-bold">Select Gender</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="femaleOption" value="Female">
+                    <label class="form-check-label" for="femaleOption">
+                        Female
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="maleOption" value="Male">
+                    <label class="form-check-label" for="maleOption">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="otherOption" value="Other">
+                    <label class="form-check-label" for="otherOption">
+                        Other
+                    </label>
+                </div><br>
+
+                <div class="form-group">
+                    <label for="userProgram" class="fw-bold">Enter Program</label>
+                    <input type="text" class="form-control" id="userProgram" placeholder="Enter Program" name="program" value="<%= survey.program %>"required>
+                </div><br>
+
+                <label class="fw-bold">Choose preffered class delivery</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="study_meth" id="onlineOption" value="Online">
+                    <label class="form-check-label" for="onlineOption">
+                        Online
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="study_meth" id="f2fOption" value="Face-To-Face">
+                    <label class="form-check-label" for="F2F">
+                        Face-To-Face
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="study_meth" id="hybridOption" value="Hybrid"\>
+                    <label class="form-check-label" for="Hybrid">
+                        Hybrid
+                    </label>
+                </div><br>
+
+                <label class="fw-bold">Is it easier to do an online test?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="test_diff" id="yesOption" value="Yes">
+                    <label class="form-check-label" for="Yes">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="test_diff" id="noOption" value="No">
+                    <label class="form-check-label" for="Yes">
+                        No
+                    </label>
+                </div><br>
+
+
+                <button class="btn btn-primary" type="submit"> Submit </button>
+
+                <a href="/survey-list" class="btn btn-warning"> Cancel </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>
