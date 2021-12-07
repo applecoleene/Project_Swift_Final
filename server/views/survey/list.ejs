@@ -7,7 +7,7 @@
     <div class="row">
         <div class="offset-md-1 col-md-10">
             <div class="px-4 py-6 my-4 text-center">
-                <h1 class="display-5 fw-bold"><%= title %></h1>
+                <h1 class="display-5 fw-bold" id="surveyTitle"><%= title %></h1>
             </div>
             <div>
                 <a href="/survey-list/add" class="btn btn-primary" role="button" id="addSurveyButton">
@@ -54,9 +54,13 @@
                 <% } %>
             </table>
             <br>
-
             <!--Statistics-->
             <div id="statisticsTable">
+                <div class="px-4 py-10 my-1 text-center">
+                    <img src="/Assets/images/logo_blue.png" alt="swift logo" width="110" height="40">
+                    <h1 class="display-5 fw-bold">Survey Statistics</h1>
+                </div><br>
+                <h3>According to <%= totals.surveyCount %> students that took the survey: </h3>
                 <h2>Statistics of students who. . .</h2>
                 <div>
                     <table id="statisticsTable" class="table table-bordered table-striped table-hover">
