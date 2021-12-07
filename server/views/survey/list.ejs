@@ -2,17 +2,17 @@
 
 <%- include ../partials/main_nav.ejs %>
 
-  <!-- Main Content -->
-  <main class="container">
+<!-- Main Content -->
+<main class="container">
     <div class="row">
         <div class="offset-md-1 col-md-10">
             <div class="px-4 py-6 my-4 text-center">
                 <h1 class="display-5 fw-bold"><%= title %></h1>
             </div>
-            <a href="/survey-list/add" class="btn btn-primary" role="button">
-            <i class="fas fa-plus-circle"></i> Add a Survey</a>
+            <a href="/survey-list/add" class="btn btn-primary" role="button" id="addSurveyButton">
+                <i class="fas fa-plus-circle"></i> Add a Survey</a>
             <br><br>
-            <table class="table table-bordered table-striped table-hover">
+            <table class="table table-bordered table-striped table-hover" id="detailedSurvey">
                 <!-- Header Row-->
                 <tr>
                     <th class="text-center">Name</th>
@@ -29,50 +29,57 @@
                 <!-- Repeatable Template Row -->
 
                 <% for(let count = 0; count < SurveyList.length; count++) { %>
-                    <tr>
-                        <td class="text-center"><%= SurveyList[count].name %></td>
-                        <td class="text-center"><%= SurveyList[count].gender %></td>
-                        <td class="text-center"><%= SurveyList[count].program %></td>
-                        <td class="text-center"><%= SurveyList[count].study_meth %></td>
-                        <td class="text-center"><%= SurveyList[count].test_diff %></td>
-                        <% if(typeof displayName == 'string' && displayName) { %>
-                        <td class="text-center">
-                            <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                <tr>
+                    <td class="text-center"><%= SurveyList[count].name %></td>
+                    <td class="text-center"><%= SurveyList[count].gender %></td>
+                    <td class="text-center"><%= SurveyList[count].program %></td>
+                    <td class="text-center"><%= SurveyList[count].study_meth %></td>
+                    <td class="text-center"><%= SurveyList[count].test_diff %></td>
+                    <% if(typeof displayName == 'string' && displayName) { %>
+                    <td class="text-center">
+                        <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                             <i class="fas fa-pencil-alt"></i> Edit</a>
-                        </td>
-                        <td class="text-center">
-                            <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
+                    </td>
+                    <td class="text-center">
+                        <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash-alt"></i> Delete</a>
-                        </td>
-                        <% } %>
-                    </tr>
+                    </td>
+                    <% } %>
+                </tr>
                 <% } %>
             </table>
             <br>
-            <a onclick="window.print();return false;" class="btn btn-primary" role="button">
+            <a onclick="window.print();return false;" media="print" class="btn btn-primary" role="button" id="printButton">
                 <i class="fas fa-print"></i> Print Statistics</a>
-                <br><br>
-                <h2>Statistics of students who. . .</h2>
-            <table class="table table-bordered table-striped table-hover">
-                <tr>
-                    <th class="text-center">Prefer Online</th>
-                    <th class="text-center">Prefer Face-To-Face</th>
-                    <th class="text-center">Prefer Hybrid</th>
-                    <th class="text-center">Think Online test is easy</th>
-                    <th class="text-center">Think Online test is hard</th>
-                </tr>
+            <br><br>
+            <h2>Statistics of students who. . .</h2>
+            <div id="statisticsTable">
+                <table id="statisticsTable" class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th class="text-center">Prefer Online</th>
+                        <th class="text-center">Prefer Face-To-Face</th>
+                        <th class="text-center">Prefer Hybrid</th>
+                        <th class="text-center">Think Online test is easy</th>
+                        <th class="text-center">Think Online test is hard</th>
+                    </tr>
 
-                <tr>
-                    <td class="text-center" id="onlineArea"><%= parseFloat((totals.preferOnline / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                    <td class="text-center" id="f2fArea"><%= parseFloat((totals.preferFaceToFace / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                    <td class="text-center" id="hybridArea"><%= parseFloat((totals.preferHybrid / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                    <td class="text-center" id="onlineYes"><%= parseFloat((totals.easy / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                    <td class="text-center" id="onlineNo"><%= parseFloat((totals.hard / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                </tr>
-            </table>
+                    <tr>
+                        <td class="text-center" id="onlineArea">
+                            <%= parseFloat((totals.preferOnline / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                        <td class="text-center" id="f2fArea">
+                            <%= parseFloat((totals.preferFaceToFace / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                        <td class="text-center" id="hybridArea">
+                            <%= parseFloat((totals.preferHybrid / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                        <td class="text-center" id="onlineYes">
+                            <%= parseFloat((totals.easy / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                        <td class="text-center" id="onlineNo">
+                            <%= parseFloat((totals.hard / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-  </main>
+</main>
 
 
 

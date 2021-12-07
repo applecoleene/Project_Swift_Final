@@ -7,10 +7,21 @@ body {
   background-color: white;
 }
 
-#homeMain, #errorPage {
+#homeMain,
+#errorPage {
   background-color: #D9F4FF;
 }
 
-tr{
+tr {
   background-color: #D9F4FF;
+}
+
+@media print {
+  #statisticsTable {
+    visibility: visible;
+  }
+
+  #navHeader, #detailedSurvey, footer, #addSurveyButton, #printButton, br {
+    display: none;
+  }
 }
