@@ -15,10 +15,38 @@ module.exports.displaySurveyList = (req, res, next) => {
         }
         else
         {
-            //console.log(surveyList);
+            let totals = {
+                surveyCount: 0,
+                preferOnline: 0,
+                preferFaceToFace: 0,
+                preferHybrid: 0,
+                easy: 0,
+                hard: 0,
+            };
+
+            surveyAnswers.forEach((element,index) => {
+                totals.surveyCount++;
+                if(element.study_meth == 'Online'){
+                    totals.preferOnline++;
+                }
+                else if(element.study_meth == 'Face-To-Face'){
+                    totals.preferFaceToFace++;
+                }
+                else if(element.study_meth == 'Hybrid'){
+                    totals.preferHybrid++;
+                }
+                
+                if(element.test_diff == 'Yes'){
+                    totals.easy++;
+                }
+                else if(element.test_diff == 'No'){
+                    totals.hard++;
+                }
+            });
 
             res.render('survey/list', 
-            {title: 'Surveys', 
+            {title: 'Surveys',
+            totals: totals, 
             SurveyList: surveyAnswers, 
             displayName: req.user ? req.user.displayName : ''});      
         }

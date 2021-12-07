@@ -6,27 +6,12 @@
   <main class="container">
     <div class="row">
         <div class="offset-md-1 col-md-10">
-            <h1><%= title %></h1>
+            <div class="px-4 py-6 my-4 text-center">
+                <h1 class="display-5 fw-bold"><%= title %></h1>
+            </div>
             <a href="/survey-list/add" class="btn btn-primary" role="button">
             <i class="fas fa-plus-circle"></i> Add a Survey</a>
             <br><br>
-            <table class="table table-bordered table-striped table-hover" onload="statsCount()">
-                <tr>
-                    <th class="text-center">Prefer Online</th>
-                    <th class="text-center">Prefer Face-To-Face</th>
-                    <th class="text-center">Prefer Hybrid</th>
-                    <th class="text-center">Think Online test is easy</th>
-                    <th class="text-center">Think Online test is hard</th>
-                </tr>
-
-                <tr>
-                    <td class="text-center" id="onlineArea"></td>
-                    <td class="text-center" id="f2fArea"></td>
-                    <td class="text-center" id="hybridArea"></td>
-                    <td class="text-center" id="onlineYes"></td>
-                    <td class="text-center" id="onlineNo"></td>
-                </tr>
-            </table>
             <table class="table table-bordered table-striped table-hover">
                 <!-- Header Row-->
                 <tr>
@@ -62,6 +47,28 @@
                         <% } %>
                     </tr>
                 <% } %>
+            </table>
+            <br>
+            <a onclick="window.print();return false;" class="btn btn-primary" role="button">
+                <i class="fas fa-print"></i> Print Statistics</a>
+                <br><br>
+                <h2>Statistics of students who. . .</h2>
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <th class="text-center">Prefer Online</th>
+                    <th class="text-center">Prefer Face-To-Face</th>
+                    <th class="text-center">Prefer Hybrid</th>
+                    <th class="text-center">Think Online test is easy</th>
+                    <th class="text-center">Think Online test is hard</th>
+                </tr>
+
+                <tr>
+                    <td class="text-center" id="onlineArea"><%= parseFloat((totals.preferOnline / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                    <td class="text-center" id="f2fArea"><%= parseFloat((totals.preferFaceToFace / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                    <td class="text-center" id="hybridArea"><%= parseFloat((totals.preferHybrid / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                    <td class="text-center" id="onlineYes"><%= parseFloat((totals.easy / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                    <td class="text-center" id="onlineNo"><%= parseFloat((totals.hard / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                </tr>
             </table>
         </div>
     </div>
