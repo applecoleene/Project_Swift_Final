@@ -22,6 +22,12 @@ module.exports.displaySurveyList = (req, res, next) => {
                 preferHybrid: 0,
                 easy: 0,
                 hard: 0,
+                onlineYes: 0,
+                f2fYes: 0,
+                hybridYes: 0,
+                onlineNo: 0,
+                f2fNo: 0,
+                hybridNo: 0,
             };
 
             surveyAnswers.forEach((element,index) => {
@@ -41,6 +47,26 @@ module.exports.displaySurveyList = (req, res, next) => {
                 }
                 else if(element.test_diff == 'No'){
                     totals.hard++;
+                }
+
+                if(element.study_meth == 'Online' && element.test_diff == 'Yes'){
+                    totals.onlineYes++;
+                }
+                else if(element.study_meth == 'Face-To-Face' && element.test_diff == 'Yes'){
+                    totals.f2fYes++;
+                }
+                else if(element.study_meth == 'Hybrid' && element.test_diff == 'Yes'){
+                    totals.hybridYes++;
+                }
+
+                if(element.study_meth == 'Online' && element.test_diff == 'No'){
+                    totals.onlineNo++;
+                }
+                else if(element.study_meth == 'Face-To-Face' && element.test_diff == 'No'){
+                    totals.f2fNo++;
+                }
+                else if(element.study_meth == 'Hybrid' && element.test_diff == 'No'){
+                    totals.hybridNo++;
                 }
             });
 

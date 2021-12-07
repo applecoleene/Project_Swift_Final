@@ -9,9 +9,14 @@
             <div class="px-4 py-6 my-4 text-center">
                 <h1 class="display-5 fw-bold"><%= title %></h1>
             </div>
-            <a href="/survey-list/add" class="btn btn-primary" role="button" id="addSurveyButton">
-                <i class="fas fa-plus-circle"></i> Add a Survey</a>
-            <br><br>
+            <div>
+                <a href="/survey-list/add" class="btn btn-primary" role="button" id="addSurveyButton">
+                    <i class="fas fa-plus-circle"></i> Add a Survey</a>
+                <a onclick="window.print();return false;" media="print" class="btn btn-info" role="button"
+                    id="printButton">
+                    <i class="fas fa-print"></i> Print Statistics</a>
+            </div>
+            <br>
             <table class="table table-bordered table-striped table-hover" id="detailedSurvey">
                 <!-- Header Row-->
                 <tr>
@@ -49,33 +54,97 @@
                 <% } %>
             </table>
             <br>
-            <a onclick="window.print();return false;" media="print" class="btn btn-primary" role="button" id="printButton">
-                <i class="fas fa-print"></i> Print Statistics</a>
-            <br><br>
-            <h2>Statistics of students who. . .</h2>
-            <div id="statisticsTable">
-                <table id="statisticsTable" class="table table-bordered table-striped table-hover">
-                    <tr>
-                        <th class="text-center">Prefer Online</th>
-                        <th class="text-center">Prefer Face-To-Face</th>
-                        <th class="text-center">Prefer Hybrid</th>
-                        <th class="text-center">Think Online test is easy</th>
-                        <th class="text-center">Think Online test is hard</th>
-                    </tr>
 
-                    <tr>
-                        <td class="text-center" id="onlineArea">
-                            <%= parseFloat((totals.preferOnline / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                        <td class="text-center" id="f2fArea">
-                            <%= parseFloat((totals.preferFaceToFace / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                        <td class="text-center" id="hybridArea">
-                            <%= parseFloat((totals.preferHybrid / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                        <td class="text-center" id="onlineYes">
-                            <%= parseFloat((totals.easy / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                        <td class="text-center" id="onlineNo">
-                            <%= parseFloat((totals.hard / totals.surveyCount) * 100).toFixed(1) %>%</td>
-                    </tr>
-                </table>
+            <!--Statistics-->
+            <div id="statisticsTable">
+                <h2>Statistics of students who. . .</h2>
+                <div>
+                    <table id="statisticsTable" class="table table-bordered table-striped table-hover">
+                        <tr>
+                            <th class="text-center">Prefer Online</th>
+                            <th class="text-center">Prefer Face-To-Face</th>
+                            <th class="text-center">Prefer Hybrid</th>
+                        </tr>
+
+                        <tr>
+                            <td class="text-center" id="onlineArea">
+                                <%= parseFloat((totals.preferOnline / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                            <td class="text-center" id="f2fArea">
+                                <%= parseFloat((totals.preferFaceToFace / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                            <td class="text-center" id="hybridArea">
+                                <%= parseFloat((totals.preferHybrid / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                        </tr>
+                    </table>
+                    <table id="statisticsTable" class="table table-bordered table-striped table-hover">
+                        <tr>
+                            <th class="text-center">Think Online test is easy</th>
+                            <th class="text-center">Think Online test is hard</th>
+                        </tr>
+
+                        <tr>
+                            <td class="text-center" id="onlineYes">
+                                <%= parseFloat((totals.easy / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                            <td class="text-center" id="onlineNo">
+                                <%= parseFloat((totals.hard / totals.surveyCount) * 100).toFixed(1) %>%</td>
+                        </tr>
+                    </table>
+                </div>
+                <h2>Statistics of students who picked online and. . .</h2>
+                <div>
+                    <table id="statisticsTable" class="table table-bordered table-striped table-hover">
+                        <tr>
+                            <th class="text-center">Think Online test is easy</th>
+                            <th class="text-center">Think Online test is hard</th>
+                        </tr>
+
+                        <tr>
+                            <td class="text-center" id="onlineYes">
+                                <%= parseFloat((totals.onlineYes / (totals.onlineYes + totals.onlineNo)) * 100).toFixed(1) %>%
+                            </td>
+                            <td class="text-center" id="onlineNo">
+                                <%= parseFloat((totals.onlineNo / (totals.onlineYes + totals.onlineNo)) * 100).toFixed(1) %>%
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h2>Statistics of students who picked face-to-face and. . .</h2>
+                <div>
+                    <table id="statisticsTable" class="table table-bordered table-striped table-hover">
+                        <tr>
+                            <th class="text-center">Think Online test is easy</th>
+                            <th class="text-center">Think Online test is hard</th>
+                        </tr>
+
+                        <tr>
+                            <td class="text-center" id="onlineYes">
+                                <%= parseFloat((totals.f2fYes / (totals.f2fYes + totals.f2fNo)) * 100).toFixed(1) %>%
+                            </td>
+                            <td class="text-center" id="onlineNo">
+                                <%= parseFloat((totals.f2fNo / (totals.f2fYes + totals.f2fNo)) * 100).toFixed(1) %>%
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h2>Statistics of students who picked hybrid and. . .</h2>
+                <div>
+                    <table id="statisticsTable" class="table table-bordered table-striped table-hover">
+                        <tr>
+                            <th class="text-center">Think Online test is easy</th>
+                            <th class="text-center">Think Online test is hard</th>
+                        </tr>
+
+                        <tr>
+                            <td class="text-center" id="onlineYes">
+                                <%= parseFloat((totals.hybridYes / (totals.hybridYes + totals.hybridNo)) * 100).toFixed(1) %>%
+                            </td>
+                            <td class="text-center" id="onlineNo">
+                                <%= parseFloat((totals.hybridNo / (totals.hybridYes + totals.hybridNo)) * 100).toFixed(1) %>%
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

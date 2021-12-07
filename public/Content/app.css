@@ -18,7 +18,7 @@ tr {
 
 @media print {
   #statisticsTable {
-    visibility: visible;
+    visibility: visible,
   }
 
   #navHeader, #detailedSurvey, footer, #addSurveyButton, #printButton, br {
