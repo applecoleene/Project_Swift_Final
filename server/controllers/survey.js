@@ -1,3 +1,11 @@
+/*
+Student IDs:  301163248
+              301000645
+              301172984
+Webapp name: survey.js
+Description: controller for survey page
+*/
+
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');

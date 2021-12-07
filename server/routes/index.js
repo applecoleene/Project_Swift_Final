@@ -1,3 +1,11 @@
+/*
+Student IDs:  301163248
+              301000645
+              301172984
+Webapp name: index.js
+Description: route for the index controller
+*/
+
 var express = require('express');
 var router = express.Router();
 

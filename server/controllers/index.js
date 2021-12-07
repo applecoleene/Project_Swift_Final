@@ -1,3 +1,10 @@
+/*
+Student IDs:  301163248
+              301000645
+              301172984
+Webapp name: index.js
+Description: controller for index page
+*/
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');

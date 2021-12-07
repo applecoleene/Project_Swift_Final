@@ -1,3 +1,11 @@
+/*
+Student IDs:  301163248
+              301000645
+              301172984
+Webapp name: survey.js
+Description: creating the model for the database
+*/
+
 //instance variables
 let mongoose = require('mongoose');
 const db = require('../config/db');

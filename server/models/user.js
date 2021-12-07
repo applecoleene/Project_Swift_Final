@@ -1,3 +1,11 @@
+/*
+Student IDs:  301163248
+              301000645
+              301172984
+Webapp name: user.js
+Description: creating the schema for the user collection
+*/
+
 //modules
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');

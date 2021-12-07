@@ -1,3 +1,10 @@
+/*
+Student IDs:  301163248
+              301000645
+              301172984
+Webapp name: app.js
+Description: Immediately Invoked Function Expression
+*/
 // IIFE -- Immediately Invoked Function Expression
 
 (function () {
